@@ -14,4 +14,14 @@
     <servlet-name>cadastrarProduto</servlet-name>
     <url-pattern>/cadastrar-produto</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>consultarProduto</display-name>
+    <servlet-name>consultarProduto</servlet-name>
+    <servlet-class>controller.ConsultarProdutoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>consultarProduto</servlet-name>
+    <url-pattern>/consultar-produto</url-pattern>
+  </servlet-mapping>
 </web-app>

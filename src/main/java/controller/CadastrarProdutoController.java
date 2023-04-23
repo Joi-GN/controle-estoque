@@ -23,19 +23,17 @@ public class CadastrarProdutoController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-//		GET PARAMETERS
-		String name = request.getParameter("name");
-		String description = request.getParameter("description");
-		int stock;
-		double price;
-		
 		String message;
 
+//		GET PARAMETERS
+		String name = request.getParameter("name");
 //		FORM INPUT VALIDATION
-		if(name != null && !name.isEmpty() && request.getParameter("stock") != null && request.getParameter("stock").isEmpty() 
-				&& request.getParameter("price") != null && request.getParameter("price").isEmpty()) {
-			stock = Integer.parseInt(request.getParameter("stock"));
-			price = Double.parseDouble(request.getParameter("price"));
+		if ( 	name != null && !name.isEmpty() 
+				&& request.getParameter("stock") != null && !request.getParameter("stock").isEmpty() 
+				&& request.getParameter("price") != null && !request.getParameter("price").isEmpty()) {
+			String description = request.getParameter("description");
+			int stock = Integer.parseInt(request.getParameter("stock"));
+			double price = Double.parseDouble(request.getParameter("price"));
 			
 			new Produto(name, description, stock, price).save();
 			

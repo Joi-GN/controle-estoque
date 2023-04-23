@@ -1,3 +1,5 @@
+<%@page import="model.Produto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,10 +27,28 @@
 	</header>
 	<main>
 		<h2>Consultar Produto</h2>
-		<form action="" method="post">
+		<form action="consultar-produto" method="post">
 			<input type="text" name="name" placeholder="Buscar pelo nome" required>
 			<input type="submit" value="Consultar">
 		</form>
+		<%
+			if (request.getAttribute("produtos") != null) {
+				List<?> produtos = (List<?>) request.getAttribute("produtos");
+				for(Object item : produtos) {
+					Produto produto = (Produto) item;
+		%>
+					<div>
+						<span><%out.print(produto.getNome());%></span>
+						<span><%out.print(produto.getDescricao());%></span>
+						<span>Estoque: <%out.print(produto.getEstoque());%></span>
+						<span>Preço: <%out.print(produto.getPreco());%></span>
+						<button>Alterar</button>
+						<button>Excluir</button>
+					</div>
+		<%
+				}
+			}
+		%>
 	</main>
 </body>
 </html>
